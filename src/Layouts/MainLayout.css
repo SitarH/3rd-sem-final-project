@@ -1,0 +1,56 @@
+*, *::after,*::before{
+    box-sizing: border-box;
+
+}
+
+body{
+    margin:0;
+    padding:0;
+    width:100%;
+}
+
+.flex-container{
+    display: flex;
+}
+
+.flex-cols{
+    flex-direction: column;
+}
+
+.flex-rows{
+    flex-direction: row;
+}
+
+.pos-absolute{
+    position: absolute;
+}
+
+.w-100{
+    width:100%;
+}
+
+
+.align-center{
+    align-items: center;
+}
+
+.topbar{
+    background-color: black;
+    height: 35px;
+    color: white;
+}
+
+.space-b{
+    justify-content: space-between;
+}
+
+.icon{
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.dropdown{
+    position: absolute;
+    z-index: 1;
+    right: 0;
+}

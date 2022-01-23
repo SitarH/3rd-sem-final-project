@@ -1,0 +1,14 @@
+
+.flex-container{
+    display: flex;
+}
+
+.flex-cols{
+    flex-direction: column;
+}
+
+.register{
+    margin-top: 100px;
+    width: 80%;
+    align-items: center;
+}

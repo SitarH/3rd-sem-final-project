@@ -1,0 +1,14 @@
+.navbar ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+}
+
+.navbar li a{
+    display: inline-block;
+    margin-left: 35px;
+    text-decoration: none;
+    color:black;
+}
