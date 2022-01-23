@@ -26,7 +26,7 @@ function Register() {
 
         })
 
-        const [cities, setcities] = useState([])
+        const [cities, setCities] = useState([])
         
 
 
@@ -62,19 +62,15 @@ function Register() {
         }
 
         const ChooseCity = async () =>{
-            let res = await fetch('https://data.gov.il/api/3/action/datastore_search?resource_id=5c78e9fa-c2e2-4771-93ff-7f400a12f7ba&limit=1266')
+            const res = await fetch('https://data.gov.il/api/3/action/datastore_search?resource_id=5c78e9fa-c2e2-4771-93ff-7f400a12f7ba&limit=1266')
+            const data = await res.json();
+            console.log({ data });
+            const cities = data.result.records.map(record => record['שם_ישוב']);
+            console.log({ cities });
 
-            let data = await res.json();
-            console.log(data)
-            let cityName = data.result.fields[2].id;
-            console.log(data.result.records[1])
-
-            if(data.success)
-                setcities([...cities,data.result.records.cityName])
-                console.log(cities)
-
-            //how the fuck do i do thattttt
-
+            if (data.success) {
+                setCities(cities);
+            }
         }
 
         useEffect(() => {
@@ -112,7 +108,11 @@ function Register() {
            <input type="password" minLength={7} maxLength={12} required={true} pattern={user.password} value={user.verify} onChange={(event) => setuser({...user, verify: event.target.value})}></input>
 
            <label>City</label>
-           <select name="city" ></select>
+           <select name="city" >
+               {cities.map((city, index) => {
+                    return <option key={index} value={city}>{city}</option>   
+               })}
+           </select>
 
            <label>Street</label>
            <input type="text" required={true} value={user.street} onChange={(event) =>setuser({...user, street: event.target.value})}></input>
