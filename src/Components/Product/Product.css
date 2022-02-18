@@ -1,0 +1,26 @@
+.Pimg{
+    width:300px;
+
+}
+
+.flex-container{
+    display: flex;
+}
+
+.flex-cols{
+    flex-direction: column;
+}
+
+.product{
+    width:300px;
+    margin: 30px
+}
+
+p{
+    margin: 5px;
+}
+
+.price{
+    font-weight: bold;
+}
+

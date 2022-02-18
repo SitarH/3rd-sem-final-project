@@ -2,14 +2,14 @@ import React from 'react'
 import './Register.css';
 import {useState, useContext, useEffect} from 'react';
 import {UserContext} from '../../Context/UserContext'
-import {ACTIONS as USER_ACTIONS} from '../../Reducer/UserReducer'
+import {ACTIONS as USER_ACTIONS} from '../../Reducer/UserReducer';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
 import Login from '../Login/Login'
 
 function Register() {
 
-        const {dispatch} = useContext(UserContext);
+        const {state, dispatch} = useContext(UserContext);
 
         const [user, setuser] = useState({
             username: '',
@@ -27,13 +27,15 @@ function Register() {
         })
 
         const [cities, setCities] = useState([])
+
+        function containsHeb(str) {
+            return (/[\u0590-\u05FF]/).test(str);
+        }
         
-
-
         const CreateUser = (event) =>{
             event.preventDefault()
             dispatch({type: USER_ACTIONS.ADD_USER , user})
-            localStorage.setItem('users',JSON.stringify(user));
+            localStorage.setItem('users',JSON.stringify([{user}]));
             alert("You have successfully registered"); 
            //return to empty object?
            //need UseEffect?
@@ -64,9 +66,7 @@ function Register() {
         const ChooseCity = async () =>{
             const res = await fetch('https://data.gov.il/api/3/action/datastore_search?resource_id=5c78e9fa-c2e2-4771-93ff-7f400a12f7ba&limit=1266')
             const data = await res.json();
-            console.log({ data });
             const cities = data.result.records.map(record => record['שם_ישוב']);
-            console.log({ cities });
 
             if (data.success) {
                 setCities(cities);
@@ -108,7 +108,7 @@ function Register() {
            <input type="password" minLength={7} maxLength={12} required={true} pattern={user.password} value={user.verify} onChange={(event) => setuser({...user, verify: event.target.value})}></input>
 
            <label>City</label>
-           <select name="city" >
+           <select name="city" onChange={(event) =>setuser({...user, city: event.target.value})}>
                {cities.map((city, index) => {
                     return <option key={index} value={city}>{city}</option>   
                })}
@@ -120,7 +120,7 @@ function Register() {
            <label>House number</label>
            <input type="number" required={true} pattern="[0-9]+" value={user.house} onChange={(event) =>setuser({...user, house: event.target.value})}></input>
             
-           <Link to="/login"><button type="submit" onClick={(event)=>CreateUser(event)}>Submit</button></Link>
+           <button type="submit" onClick={(event)=>CreateUser(event)}><Link to="/login">Submit</Link></button>
         </form>
     )
 }

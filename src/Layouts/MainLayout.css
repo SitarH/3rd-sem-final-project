@@ -44,6 +44,10 @@ body{
     justify-content: space-between;
 }
 
+.space-a{
+    justify-content: space-around;
+}
+
 .icon{
     margin-right: 10px;
     cursor: pointer;
@@ -54,3 +58,9 @@ body{
     z-index: 1;
     right: 0;
 }
+
+.size400{
+    width: 400px;
+    height: 400px;
+}
+
