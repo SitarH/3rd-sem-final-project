@@ -6,14 +6,13 @@ import './ProductList.css';
 
 
 
-function ProductList() {
+function ProductList({data}) {
 
     const {state, dispatch} = useContext(ProductContext);
 
-
   return (
     <div className="product-list">
-        {state.all.map((item, index) =><Product key={index} data={item}/>)}
+        {data.map((item, index) =><Product key={index} data={item}/>)}
     </div>
   )
 }

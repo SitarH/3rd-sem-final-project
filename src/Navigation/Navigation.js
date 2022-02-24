@@ -12,12 +12,14 @@ import UserProfile from '../Components/UserProfile/UserProfile';
 import Admin from '../Pages/Admin/Admin';
 import UpdateUser from '../Components/UpdateUser/UpdateUser';
 import ProductContextProvider from '../Context/ProductContext';
+import Cart from '../Components/Cart/Cart';
+import ProductPage from '../Components/ProductPage/ProductPage';
 
 function Navigation() {
     return (
       
         <Routes>
-            <Route path="/" element={<ProductContextProvider><Home/></ProductContextProvider>}></Route>
+            <Route path="/" element={<UserContextProvider><ProductContextProvider><Home/></ProductContextProvider></UserContextProvider>}></Route>
             <Route path="/products" element={<ProductContextProvider><Products/></ProductContextProvider>}></Route>
             <Route path="/snowboard" element={<Snowboard/>}></Route>
             <Route path="/ski" element={<Ski/>}></Route>
@@ -27,6 +29,8 @@ function Navigation() {
             <Route path="/userProfile" element={<UserContextProvider><UserProfile/></UserContextProvider>}></Route>
             <Route path="/admin" element={<ProductContextProvider><UserContextProvider><Admin/></UserContextProvider></ProductContextProvider>}></Route>
             <Route path="/updateuser" element={<UserContextProvider><UpdateUser/></UserContextProvider>}></Route>
+            <Route path="/cart" element={<ProductContextProvider><Cart/></ProductContextProvider>}></Route>
+            <Route path="/productpage" element={<ProductContextProvider><ProductPage/></ProductContextProvider>}></Route>
         </Routes>
       
     )

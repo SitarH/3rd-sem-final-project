@@ -14,24 +14,16 @@ function Admin() {
       }
     
 
-
   return (
         <div className="admin flex-container flex-cols">
 
             <h1>Hello, Admin</h1>
             <UsersList/>
-            <button onClick={ToggleAdd}>Add a Product</button>
+            <button className="btn" onClick={ToggleAdd}>Add a Product</button>
             {showAddProduct? <AddProduct/> : null}
 
 
         </div>
-    
-    
-    
-    
-    
-    
-    
     
     );
 }

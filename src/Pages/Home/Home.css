@@ -1,0 +1,164 @@
+
+.main {
+    position: relative;
+    left: 0;
+    top: 0;
+    width: 100%;
+
+}
+
+.main .home {
+    position: relative;
+    top: 0;
+    left: 0;
+}
+
+.main .chairlift {
+    display: none;
+}
+
+@media screen and (min-width:1200px) {
+    .main .chairlift {
+        display: unset;
+        width: 600px;
+        height: 500px;
+        position: absolute;
+        left: 80px;
+        margin-left: 500px;
+        animation: swing ease-in-out 1s infinite alternate;
+        transform-origin: center -20px;
+        float: left;
+
+    }
+
+    .main .chairlift:after {
+        content: '';
+        position: absolute;
+        width: 20px;
+        height: 20px;
+
+        top: -10px;
+        left: 50%;
+        z-index: 0;
+        border-bottom: none;
+        border-right: none;
+        transform: rotate(45deg);
+    }
+
+    /* nail */
+    .main .chairlift:before {
+        content: '';
+        position: absolute;
+        width: 5px;
+        height: 5px;
+        top: -14px;
+        left: 54%;
+        z-index: 5;
+        border-radius: 50% 50%;
+
+    }
+}
+
+@keyframes swing {
+    0% {
+        transform: rotate(3deg);
+    }
+
+    100% {
+        transform: rotate(-3deg);
+    }
+}
+
+
+
+.shop {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 30px;
+    padding-top: 50px;
+    flex-direction: column;
+}
+
+@media screen and (min-width:1200px) {
+    .shop{
+        flex-direction: unset;
+        width: 100%;
+    }
+}
+
+@media screen and (min-width:768px) {
+    .shop .shop-sec {
+        text-align: center;
+
+    }
+}
+
+@media screen and (min-width:1200px) {
+    .shop img {
+        width: 450px;
+        height: 450px;
+        margin: 60 20px;
+
+    }
+}
+
+.shop .categories .lifestyle {
+    display: unset;
+}
+
+
+@media screen and (max-width:767px) {
+    .shop .category .lifestyle {
+        display: none;
+    }
+
+}
+
+.categories {
+    margin-bottom: 50px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.categories a {
+    overflow: hidden;
+    display: block;
+
+}
+
+.categories a img {
+    width: 160px;
+    height: 190px;
+    margin-top: 20px;
+    z-index: 10;
+    position: relative;
+    display: block;
+    max-width: 100%;
+    opacity: 1;
+    -webkit-transition: all .4s;
+    -moz-transition: all .4s;
+    transition: all .4s;
+}
+
+.categories a:hover img {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+}
+
+
+@media screen and (min-width:1200px) {
+    .shop .categories img {
+        width: 160px;
+        height: 190px;
+        margin: 10px;
+        margin-top: 20px;
+    }
+}
+
+
+.bestsellers {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 50px;
+}

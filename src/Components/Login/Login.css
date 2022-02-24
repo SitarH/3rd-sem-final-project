@@ -8,6 +8,25 @@
 
 .login{
     margin-top: 100px;
-    width: 80%;
     align-items: center;
+    width: 100%;
+}
+
+.sign{
+    margin-top: 20px;
+}
+
+.sign a{
+    margin-top: 20px;
+    color: white;
+    text-decoration: none;
+}
+
+input[type=password], input[type=username]{
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+    border: 2px solid black;
+  border-radius: 4px;
+  width: 430px;
 }

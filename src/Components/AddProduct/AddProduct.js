@@ -44,25 +44,27 @@ const AddProduct = (event)=>{
 }
 
   return (
-    <form>
-        <label>Serial Number:</label>
-        <input type="text" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])+" required={true} value={newProduct.serialNum} onChange={(event) =>  setNewProduct({...newProduct, serialNum: event.target.value})}></input>
-        <label>Product Name:</label>
-        <input type="text" pattern="(?=.*[a-z])(?=.*[A-Z])+" required={true} value={newProduct.productName} onChange={(event) =>  setNewProduct({...newProduct, productName: event.target.value})}></input>
-        <label>Price:</label>
-        <input type="number" pattern=" 0+\.[0-9]*[1-9][0-9]*$" required={true} value={newProduct.price} onChange={(event) =>  setNewProduct({...newProduct, price: event.target.value})}></input>
-        <label>Image</label>
+    <form onSubmit={AddProduct}>
+        <div className="input-group flex-cols">
+       
+        <input placeholder="Serial Number" type="text" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])+" required={true} value={newProduct.serialNum} onChange={(event) =>  setNewProduct({...newProduct, serialNum: event.target.value})}></input>
+
+        <input placeholder="Product Name" type="text" pattern="(?=.*[a-z])(?=.*[A-Z])+" required={true} value={newProduct.productName} onChange={(event) =>  setNewProduct({...newProduct, productName: event.target.value})}></input>
+
+        <input placeholder="Price" type="number" pattern=" 0+\.[0-9]*[1-9][0-9]*$" required={true} value={newProduct.price} onChange={(event) =>  setNewProduct({...newProduct, price: event.target.value})}></input>
+  
         <input type="file" name="file" onChange={UploadImage}></input>
-        <label>Description:</label>
-        <input type="text" pattern="(?=.*[a-z])(?=.*[A-Z])+" required={true} value={newProduct.description} onChange={(event) =>  setNewProduct({...newProduct, description: event.target.value})}></input>
-        <label>Category:</label>
-        <select required={true} value={newProduct.category} onChange={(event) =>  setNewProduct({...newProduct, category: event.target.value})}>
+      
+        <textarea name="des" placeholder="Description" type="text" pattern="(?=.*[a-z])(?=.*[A-Z])+" required={true} value={newProduct.description} onChange={(event) =>  setNewProduct({...newProduct, description: event.target.value})}/>
+
+        <select name="category" required={true} value={newProduct.category} onChange={(event) =>  setNewProduct({...newProduct, category: event.target.value})}>
+            <option value="disable" disabled selected hidden>Choose Category</option>
             <option value="ski">Ski</option>
             <option value="snowboard">Snowboard</option>
             <option value="lifestyle">Lifestyle</option>
         </select>
-        {newProduct.productName && newProduct.serialNum && newProduct.price && newProduct.img && newProduct.description && newProduct.category ? <button onClick={AddProduct}>Submit</button> : <button disabled={true}>Submit</button>}
-        
+        {newProduct.productName && newProduct.serialNum && newProduct.price && newProduct.img && newProduct.description && newProduct.category ? <button className="btn">Submit</button> : <button disabled={true}>Submit</button>}
+        </div>
     </form>
   )
 }

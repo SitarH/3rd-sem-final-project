@@ -2,6 +2,7 @@ import React from 'react'
 import User from './User/User';
 import {useState, useContext, useEffect} from 'react';
 import {UserContext} from '../../Context/UserContext';
+import {Table} from 'react-bootstrap';
 
 function UsersList() {
 
@@ -10,24 +11,27 @@ function UsersList() {
 
     useEffect(() => {
       let list = JSON.parse(localStorage.getItem('users'))
-      console.log(list)
       setUsersList(list)
     }, [])
 
 
   return (
-    <table>
+    <Table>
       <thead>
         <tr>
-        <td>User Name</td>
-        <td>Full Name</td>
-        <td>Date of Birth</td>
-        <td>Address</td>
-        <td>Email</td>
+        <th>Image</th>
+        <th>User Name</th>
+        <th>Full Name</th>
+        <th>Date of Birth</th>
+        <th>Address</th>
+        <th>Email</th>
         </tr>
-        {usersList.map((item, index) =>(<User key={index} data={item} />))}
-        </thead>  
-    </table>
+        </thead>
+        <tbody>
+        {usersList === null || usersList.length === 0? <h1>No users</h1>: usersList.map((item, index) =>(<User key={index} data={item} />))}
+        </tbody>
+         
+    </Table>
   )
 }
 

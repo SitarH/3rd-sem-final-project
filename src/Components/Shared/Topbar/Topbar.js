@@ -1,25 +1,30 @@
 import React from 'react'
 import { useState } from 'react'
 import '../../../Layouts/MainLayout.css'
-import AccountPopUp from '../AccountPopUp/AccountPopUp'
+import AccountPopUp from '../AccountPopUp/AccountPopUp';
+import {Link} from 'react-router-dom';
 
 function Topbar() {
 
 const [showPopup, setshowPopUp] = useState(false);
 
    const OpenPopUp = () =>{
-       let show = !showPopup;
-    setshowPopUp(show);
+    setshowPopUp(true);
+
+   }
+
+   const ClosePopUp = () =>{
+    setshowPopUp(false);
 
    }
     return (
-        <div className="flex-cols">
+        <div className="flex-cols z-one">
         <div className="topbar flex-container space-b align-center">
             <div>Search</div>
             <div className="right-side flex-container flex-rows">
-            <a className="icon account" onMouseOver={OpenPopUp}>Login</a>
+            <a className="icon account" onMouseOver={showPopup? ClosePopUp: OpenPopUp}>Login</a>
             <div className="icon">Favs</div>
-            <div className="icon">Cart</div>
+            <div className="icon"><Link to='/cart'>Cart</Link></div>
             </div>
         </div>
             <div className="dropdown">{showPopup ? <AccountPopUp/> : null}</div>

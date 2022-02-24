@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import {createContext, useReducer, useState} from 'react';
 import { UserReducer } from '../Reducer/UserReducer';
 
@@ -10,6 +10,12 @@ export default function UserContextProvider(props) {
     users: [],
     currentUser: null
     }    
+
+    useEffect(()=>{
+        let local_users = JSON.parse(localStorage.getItem('users'));
+        if(local_users != null)
+            initialState.users = local_users
+    },[]);
 
     const [state, dispatch] = useReducer(UserReducer, initialState);
 

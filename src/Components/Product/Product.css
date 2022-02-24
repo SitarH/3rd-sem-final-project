@@ -1,5 +1,6 @@
 .Pimg{
     width:300px;
+    height: 350px;
 
 }
 
@@ -13,14 +14,56 @@
 
 .product{
     width:300px;
-    margin: 30px
+    margin: 30px;
+    text-align: center;
+    align-items: center;
 }
 
 p{
     margin: 5px;
+    font-size:small;
 }
 
 .price{
     font-weight: bold;
+    position: absolute;
+    margin-right: 230px;
+    font-size: x-large;
+}
+
+.category{
+    background-color: white;
+    color: black;
+    border: 1px solid black;
+    padding: 3px;
+    width: 85px;
+
+}
+
+.serialN{
+    position: absolute;
+    margin-top: 330px;
+    margin-left: 250px;
+}
+
+.s:hover {
+    background: linear-gradient(-45deg, #c1480b, #048467);
+    background-size: 400% 400%;
+    animation: gradient 3s ease infinite;
+    border: solid 3px linear-gradient(-45deg, #c1480b, #048467);
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
 }
 

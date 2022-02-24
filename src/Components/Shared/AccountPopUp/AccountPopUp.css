@@ -6,9 +6,26 @@
     color: black;
     border: 2px solid black;
     margin-top: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.btn{
-    background-color:black;
+.one{
+    background-color:#048467;
     color: white;
+    border: 2px solid black;
+    margin-right: 5px;
 }
+
+.two{
+    background-color:#c1480b;
+    color: white;
+    border: 2px solid black;
+}
+
+.buttons{
+    display: flex;
+    margin-top: 30px;
+}
+

@@ -1,45 +1,50 @@
-import {useReducer} from "react";
 
 export const ACTIONS = {
     ADD_USER: 'add',
     REMOVE_USER: 'remove',
     UPDATE_USER: 'update',
-    FIND_USER: 'find'
+    FIND_USER: 'find',
+    LOAD_USERS: 'load'
 }
 
-export const UserReducer = (state, action) =>{
+export const UserReducer = (state, action) => {
     switch (action.type) {
         case ACTIONS.ADD_USER:
-            console.log(action.user)
-            console.log(state.users)
-           let verifyUser = AddUser(action.user, state);
-           console.log(verifyUser)
-           if (verifyUser)
-                return {
-                    users:[...state.users, action.user]
-                };
+            let verifyUser = AddUser(action.user, state);
+            if (verifyUser) {
+                console.log('first', JSON.stringify([...state.users, {...action.user}]))
+                localStorage.setItem('users', JSON.stringify([...state.users, {...action.user}]));
+                return { ...state, users: [...state.users, {...action.user}] }
+            }
             else
                 alert('email already exists, please try again')
 
             break;
         case ACTIONS.REMOVE_USER:
-            let users = RemoveUser(action.user, state);
-            return {
+            debugger
+            const users = RemoveUser(action.data, state);
+            localStorage.setItem('users', JSON.stringify(users));
+            return {...state,
                 users: users
             }
             break;
         case ACTIONS.UPDATE_USER:
             debugger
+            console.log(state.users)
             console.log(action.user)
-            console.log(action.currentUser)
-            console.log(action.users)
-            UpdateUser(action.user,state, action.updatedUser)
+            console.log(action.Cuser)
+            const updated = UpdateUser(state, action.Cuser, action.user)
+            console.log(updated)
+            localStorage.setItem('users', JSON.stringify(updated));
+            return {...state,
+                users: updated
+            }
 
             break;
         case ACTIONS.FIND_USER:
             console.log(state.users)
             let user = FindUser(action.login, state)
-            if (user != null){
+            if (user != null) {
                 console.log(action.user)
                 sessionStorage.setItem('currentUser', JSON.stringify(user));
             }
@@ -52,35 +57,40 @@ export const UserReducer = (state, action) =>{
 
 }
 
-function AddUser(newUser, state) { 
-    if(state.users.some(user => user.email === newUser.email)){
+function AddUser(newUser, state) {
+    console.log('newUser', newUser)
+    if(state.users != null) {
+    if (state.users.some(user => user.email === newUser.email)) {
         return false;
     }
-    else{
+    return true;
+    }
+    else {
         return true;
     }
 
 }
 
-function RemoveUser(user, state){
-    state.users.filter(item => user.email !== item.email)
-    return state.users;
+function RemoveUser(user, state) {
+    const newUsersArr = state.users.filter(item => user.email !== item.email)
+    return newUsersArr;
 
 }
 
-function UpdateUser(user,state, updatedUser){
-    debugger
-    state.users.map(item =>{ 
-        if (item.password === user.password && item.email === user.email)
-            return updatedUser;
+function UpdateUser(state, user, updatedUser) {
+   const UpdatedArr = state.users.map(item => {
+        if (item.email === user.email)
+            item = updatedUser;
         return item;
     }
+    )
+    return UpdatedArr;
+    
+}
 
-    )}
-
-function FindUser(checkUser, state){
-    if(state.users && state.users.find(item => item.username === checkUser.username && item.password === checkUser.password)){
-        let currentUser = state.users.map(item=> {if (item.username === checkUser.username) return item});
+function FindUser(checkUser, state) {
+    if (state.users && state.users.find(item => item.username === checkUser.username && item.password === checkUser.password)) {
+        let currentUser = state.users.map(item => { if (item.username === checkUser.username) return item });
         console.log(currentUser[0])
         return currentUser[0];
     }

@@ -1,0 +1,21 @@
+.flex-container{
+    display: flex;
+}
+
+.flex-cols{
+    flex-direction: column;
+}
+
+.cart{
+    margin-top: 100px;
+    align-items: center;
+}
+
+.btn{
+    background-color: black;
+    border: 1px solid black;
+    color: white;
+    font-weight: bold;
+    padding: 10px 30px;
+    cursor: pointer;
+}

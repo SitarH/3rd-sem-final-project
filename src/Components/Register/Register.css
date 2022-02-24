@@ -9,6 +9,69 @@
 
 .register{
     margin-top: 100px;
-    width: 80%;
+    width: 100%;
     align-items: center;
 }
+
+input[type=text], input[type=email], input[type=password], select[type=city], input[type=number], input[type=date],select[name="city"], select[name="category"], textarea[name="des"]{
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+      border: 2px solid black;
+    border-radius: 4px;
+  }
+
+  .input-group{
+    display: flex;
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+    grid-template-columns: repeat(12,1fr);
+    margin: 0;
+    width: 430px;
+
+  }
+
+  input[placeholder="Username"], input[placeholder="Email"], select[name="city"]{
+    width: 430px;
+
+  }
+
+  .sign{
+      width: 430px;
+      margin-bottom: 40px;
+  }
+
+  input[placeholder="Date of Birth"]{
+    width: 240px;
+  }
+
+  .sign:hover {
+    background: linear-gradient(-45deg, #c1480b, #048467);
+    background-size: 400% 400%;
+    animation: gradient 3s ease infinite;
+    border: solid 3px linear-gradient(-45deg, #c1480b, #048467);
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.update{
+  margin-top: 30px;
+  width: 100%;
+  align-items: center;
+}
+
+  
+
+ 

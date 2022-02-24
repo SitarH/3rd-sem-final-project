@@ -51,6 +51,13 @@ body{
 .icon{
     margin-right: 10px;
     cursor: pointer;
+    text-decoration: none;
+    color: white;
+}
+
+.icon a{
+    color: white;
+    text-decoration: none;
 }
 
 .dropdown{
@@ -62,5 +69,9 @@ body{
 .size400{
     width: 400px;
     height: 400px;
+}
+
+.z-one{
+    z-index: 1;
 }
 
