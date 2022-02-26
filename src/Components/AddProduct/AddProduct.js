@@ -10,7 +10,7 @@ const {state, dispatch} = useContext(ProductContext);
 const [newProduct, setNewProduct] = useState({
                 productName: '' ,
                 serialNum: '' ,
-                img: '' ,
+                img: [] ,
                 price: 0 ,
                 description: '' ,
                 category: '',
@@ -37,6 +37,7 @@ const AddProduct = (event)=>{
     console.log(newProduct)
     dispatch({type: PRODUCT_ACTIONS.ADD_PRODUCT , newProduct});
     console.log(state.all);
+    alert('Product Added successfully')
 
 
 

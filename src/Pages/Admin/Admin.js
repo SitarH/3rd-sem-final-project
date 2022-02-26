@@ -22,7 +22,6 @@ function Admin() {
             <button className="btn" onClick={ToggleAdd}>Add a Product</button>
             {showAddProduct? <AddProduct/> : null}
 
-
         </div>
     
     );

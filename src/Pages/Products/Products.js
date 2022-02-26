@@ -16,8 +16,13 @@ function Products() {
 
     const [filter, setFilter] = useState([])
 
-    
+    const [products, setProducts] = useState([])
 
+        useEffect(() => { //using local storage cause initialstate doesnt update
+            let products = JSON.parse(localStorage.getItem('products'))
+            setProducts(products)
+          }, [localStorage.getItem('products')])
+    
 
 
     useEffect(() => {
@@ -73,7 +78,7 @@ function Products() {
             </select>
             </div>
             </div>
-            {filterValue === 'disable' && sortValue === 'disable'? <ProductList data={state.all}/> : <ProductList data={filter}/>}
+            {filterValue === 'disable' && sortValue === 'disable'? <ProductList data={products}/> : <ProductList data={filter}/>}
            
         </div>
     )

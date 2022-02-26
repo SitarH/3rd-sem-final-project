@@ -6,7 +6,6 @@ function AccountPopUp() {
 
 
 
-
     return (
         <div className="login-popup">
             <h2>Login or Register</h2>

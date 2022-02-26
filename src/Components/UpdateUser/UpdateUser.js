@@ -33,6 +33,7 @@ function UpdateUser({Cuser}) {
             dispatch({type: USER_ACTIONS.UPDATE_USER,Cuser, user})
             //localStorage.setItem('users',JSON.stringify([{user}]));
             alert("You have successfully Update"); 
+            
     }
      
           
@@ -94,7 +95,7 @@ return (
        <div className="input-group">
        <input placeholder="Date of Birth" type="date" required={true} value={user.dateOfBirth} onChange={(event) => AgeValidations(new Date(event.target.value))? setuser({...user, dateOfBirth: event.target.value}): alert("Invalid Date, try again")}></input>
 
-       <input type="file" name="file" onChange={UploadImage}></input>
+       <input type="file" name="file" required={true} onChange={UploadImage}></input>
        </div>
        <div className="input-group">
        <input placeholder="Password" type="password" minLength={7} maxLength={12} required={true} pattern="^(?=.*[A-Za-z])(?=.*[!@#$%^*_=+-])(?=.*\d)[A-Za-z\d!@#$%^*_=+-]{7,12}$" value={user.password} onChange={(event) => setuser({...user, password: event.target.value})}></input>

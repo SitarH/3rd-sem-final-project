@@ -19,7 +19,9 @@ export const ProductReducer = (state, action) =>{
         break;
 
         case ACTIONS.REMOVE_PRODUCT:
-
+            let cart = JSON.parse(localStorage.getItem('cart'))
+            const updated = RemoveProduct(action.data, cart);
+            localStorage.setItem('cart', JSON.stringify(updated));
         break;
 
         case ACTIONS.UPDATE_PRODUCT:
@@ -74,7 +76,9 @@ function AddProduct(newUser, state) {
 
 }
 
-function RemoveProduct(user, state){
+function RemoveProduct(product, cart){
+    const newProductsArr = cart.filter(item => product.productName !== item.productName)
+    return newProductsArr;
   
 
 }

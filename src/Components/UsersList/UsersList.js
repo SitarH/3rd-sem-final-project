@@ -12,7 +12,7 @@ function UsersList() {
     useEffect(() => {
       let list = JSON.parse(localStorage.getItem('users'))
       setUsersList(list)
-    }, [])
+    }, [localStorage.getItem('users')])
 
 
   return (

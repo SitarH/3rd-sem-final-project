@@ -22,8 +22,7 @@ const [showPopup, setshowPopUp] = useState(false);
         <div className="topbar flex-container space-b align-center">
             <div>Search</div>
             <div className="right-side flex-container flex-rows">
-            <a className="icon account" onMouseOver={showPopup? ClosePopUp: OpenPopUp}>Login</a>
-            <div className="icon">Favs</div>
+            <a className="icon account" onMouseOver={showPopup? ClosePopUp: OpenPopUp}>Account</a>
             <div className="icon"><Link to='/cart'>Cart</Link></div>
             </div>
         </div>

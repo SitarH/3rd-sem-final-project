@@ -5,3 +5,21 @@
 .flex-cols{
     flex-direction: column;
 }
+
+.btns{
+    margin-top: 40px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.use{
+    margin-right: 40px;
+
+}
+
+.use a{
+    text-decoration: none;
+    color: white;
+}

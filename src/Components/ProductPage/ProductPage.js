@@ -7,8 +7,6 @@ function ProductPage() {
 
     const [productData, setProductData] = useState(JSON.parse(sessionStorage.getItem('product')))
 
-    const [cartStorage, setCartStorage] = useState([])
-
     useEffect(() => {
       let product = JSON.parse(sessionStorage.getItem('product'))
       console.log(product)
@@ -18,20 +16,11 @@ function ProductPage() {
 
 
      const AddTocart = () =>{
-      debugger
-      if (localStorage.getItem('cart') == null){
-        localStorage.setItem('cart', JSON.stringify([productData]))
-        setCartStorage(productData);
-      }
-      else{
-      let cartP = JSON.parse(localStorage.getItem('cart'));
-      let cartCurrent = cartP.map(item => item)
-      setCartStorage(cartCurrent);
-      console.log(cartStorage) 
-      setCartStorage([...cartStorage, productData])
-      localStorage.setItem('cart', JSON.stringify([cartStorage]))
-      
-      }
+      let newCart = []
+		  if (localStorage.getItem('cart'))
+			  newCart = JSON.parse(localStorage.getItem('cart'))
+		  newCart.push(productData)
+		  localStorage.setItem('cart',JSON.stringify(newCart))
       alert('Product added to cart')
     }
  

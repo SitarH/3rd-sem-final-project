@@ -36,6 +36,10 @@ export const UserReducer = (state, action) => {
             const updated = UpdateUser(state, action.Cuser, action.user)
             console.log(updated)
             localStorage.setItem('users', JSON.stringify(updated));
+            let currentUserUpdate = JSON.parse(sessionStorage.getItem('currentUser'));
+            if (currentUserUpdate != null){
+                sessionStorage.setItem('currentUser', JSON.stringify(action.user));
+            }
             return {...state,
                 users: updated
             }

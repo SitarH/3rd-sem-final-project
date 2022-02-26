@@ -10,18 +10,17 @@ function UserProfile() {
 
   const {state, dispatch} = useContext(UserContext);
 
-  const [currentUser, setCurrentUser] = useState({});
+  const [currentUser, setCurrentUser] = useState(sessionStorage.getItem('currentUser'));
   const [showUpdate, setShowUpdate] = useState(false);
 
   
   useEffect(() => {
     BringUser()
  
-  }, [])
+  }, [sessionStorage.getItem('currentUser')])
 
 
   const BringUser = () =>{
-    console.log(state.users)
     const user = JSON.parse(sessionStorage.getItem('currentUser'));
     if (user != null){
     setCurrentUser(user)
@@ -30,7 +29,6 @@ function UserProfile() {
     
   }
 
-  //why state resets?????
 
   const ToggleUpdate = (event) =>{
     console.log(state.users);
@@ -50,10 +48,12 @@ function UserProfile() {
     <h1>Hello, {currentUser.fname} </h1>
    <label>{currentUser.email}</label>
    <label>{currentUser.city}, {currentUser.street}</label>
-   <label>{currentUser.dateOfBirth}</label>
-   <button onClick={ToggleUpdate}>Update Details</button>
-   <button>Game</button>
-   <button onClick={LogOut}><Link to="/login">LogOut</Link></button>
+   <label>{new Date(currentUser.dateOfBirth).getDate()}/{new Date(currentUser.dateOfBirth).getMonth()}/{new Date(currentUser.dateOfBirth).getFullYear()}</label>
+   <div className="btns flex-container">
+   <button className="btn use" onClick={ToggleUpdate}>Update Details</button>
+   <button className="btn use">Game</button>
+   <button className="btn use" onClick={LogOut}><Link to="/login">Log Out</Link></button>
+   </div>
  </form>
 
   
