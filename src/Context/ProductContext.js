@@ -92,7 +92,7 @@ export default function ProductContextProvider(props) {
             {
                 productName: "Roc Women's Snowboard Jacket",
                 serialNum: "SJW11",
-                img: [bestseller2],
+                img: [bestseller2,montecJacket1,montecJacket2],
                 price: 220,
                 description: "Simplicity redefined. The Adept is a reliable zip-through jacket with all the features you need for a long day on the mountain. ",
                 category: "Snowboard",
@@ -103,7 +103,7 @@ export default function ProductContextProvider(props) {
             {
                 productName: "Lowball Zip Sweater Black",
                 serialNum: "HM10",
-                img: [bestseller3],
+                img: [bestseller3,burtonHoodie2,burtonHoodie3],
                 price: 100,
                 description: "Simplicity redefined. The Adept is a reliable zip-through jacket with all the features you need for a long day on the mountain. ",
                 category: "lifestyle",
@@ -115,7 +115,7 @@ export default function ProductContextProvider(props) {
 
                 productName: "Sight Medium Ski Goggle",
                 serialNum: "GG18",
-                img: [bestseller4],
+                img: [bestseller4,goggles1,goggles2],
                 price: 120,
                 description: "Simplicity redefined. The Adept is a reliable zip-through jacket with all the features you need for a long day on the mountain. ",
                 category: "lifestyle",
@@ -129,7 +129,7 @@ export default function ProductContextProvider(props) {
     useEffect(() => {
         let local_products = JSON.parse(localStorage.getItem('products'));
         console.log('local_products', local_products)
-        if (local_products == null)
+        if (local_products === null || local_products.length ===0)
             localStorage.setItem('products', JSON.stringify(initialState.all))
         else if(initialState.all.length < local_products.length){
             console.log('111', 111)

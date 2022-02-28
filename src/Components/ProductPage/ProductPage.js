@@ -19,7 +19,7 @@ function ProductPage() {
       let newCart = []
 		  if (localStorage.getItem('cart'))
 			  newCart = JSON.parse(localStorage.getItem('cart'))
-		  newCart.push(productData)
+		  newCart.push({...productData, quantity:1})
 		  localStorage.setItem('cart',JSON.stringify(newCart))
       alert('Product added to cart')
     }

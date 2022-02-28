@@ -5,6 +5,7 @@ export const ACTIONS = {
     UPDATE_PRODUCT: 'update',
     FILTER_PRODUCT: 'filter',
     SORT_PRODUCT: 'sort',
+    REMOVE_FROM_LS: 'removels'
 }
 
 
@@ -17,16 +18,25 @@ export const ProductReducer = (state, action) =>{
            
 
         break;
+        case ACTIONS.REMOVE_FROM_LS:
+            let products = JSON.parse(localStorage.getItem('products'))
+            const updatedProd = RemoveProduct(action.item, products);
+            localStorage.setItem('products', JSON.stringify(updatedProd));
+            return updatedProd;
+            break;
 
         case ACTIONS.REMOVE_PRODUCT:
             let cart = JSON.parse(localStorage.getItem('cart'))
-            const updated = RemoveProduct(action.data, cart);
+            const updated = RemoveProduct(action.item, cart);
             localStorage.setItem('cart', JSON.stringify(updated));
+            return updated;
         break;
 
         case ACTIONS.UPDATE_PRODUCT:
-      
-
+            let productslist = JSON.parse(localStorage.getItem('products'))
+            const updatedP = UpdateProduct(productslist, action.CurrentProduct, action.newProduct)
+            localStorage.setItem('products', JSON.stringify(updatedP));
+            return updatedP
         break;
         case ACTIONS.FILTER_PRODUCT:
             let sorted = filterProduct(state, action.value);
@@ -83,8 +93,15 @@ function RemoveProduct(product, cart){
 
 }
 
-function UpdateProduct(user,state, updatedUser){
-
-  }
+function UpdateProduct(Productlist, currentP, updatedP) {
+    const UpdatedArr = Productlist.map(item => {
+         if (item.productName === currentP.productName) 
+             item = updatedP;
+         return item;
+     }
+     )
+     return UpdatedArr;
+     
+ }
 
 

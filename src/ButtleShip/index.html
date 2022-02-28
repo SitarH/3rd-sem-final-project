@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="functions.js"></script>
+    <script src="main.js" defer></script>
+</head>
+<body>
+    <h1 class="header">Battle Ship</h1>
+    <div class="game">
+        <div class="game-form">
+            <form >
+                <h1>Game Options</h1>
+                <input type="radio" name="grid" value="10">10*10
+                <input type="radio" name="grid" value="11">11*11
+                <input type="radio" name="grid" value="12">12*12
+                <br>
+                <input type="radio" name="grid" value="13">13*13
+                <input type="radio" name="grid" value="14">14*14
+                <input type="radio" name="grid" value="15">15*15
+               
+
+                <h1>Please choose a<br> numbers of battleships</h1>
+                <p>Battleship size 2:</p>
+                <input class="nums" id="two" type="text" name="array[]" value="">
+                <p>Battleship size 3:</p>
+                <input class="nums" id="three" type="text" name="array[]" value="">
+                <p>Battleship size 4:</p>
+                <input class="nums" id="four" type="text" name="array[]" value="">
+                <p>Battleship size 5:</p>
+                <input class="nums" id="five" type="text" name="array[]" value="">
+                <br>
+                <button id="start">Start</button>
+            </form>
+        </div>
+        <div class="game-board"></div>
+        <div class="game-details">
+            <h1>YOUR GAME:</h1>
+            <p>clicks:<span class="click"></span></p>
+            <p>score:<span class="score"></span></p>
+            <h1 class="finish"></h1>
+        </div>
+    </div>
+</body>
+</html>

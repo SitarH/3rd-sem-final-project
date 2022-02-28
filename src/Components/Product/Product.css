@@ -24,6 +24,10 @@ p{
     font-size:small;
 }
 
+.des{
+    height:52px;
+}
+
 .price{
     font-weight: bold;
     position: absolute;

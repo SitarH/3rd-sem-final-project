@@ -1,32 +1,55 @@
 import React from 'react';
-import {useState, useContext} from'react';
-import { ProductContext } from '../../Context/ProductContext'
-import { ACTIONS as PRODUCT_ACTIONS } from '../../Reducer/ProductReducer';
+import {useState, useEffect} from'react';
 
-function CartItem({data}) {
+function CartItem({data, remove, calc}) {
 
-    const { state, dispatch } = useContext(ProductContext);
 
     const [quantity, setQuantity] = useState(1)
+
+    const [total, setTotal] = useState(data.quantity*data.price)
+
+    useEffect(() => {
+
+      setQuantity(data.quantity)
+     
+    }, [])
+
+    
 
     const handleQuantity = (action) =>{
         if (action == 'decrement'){
             if (quantity <= 1){
                 setQuantity(1)
+                data.quantity = quantity;
             }
             else{
-                setQuantity(quantity-1) 
+                setQuantity(quantity-1);
+                data.quantity = quantity;
+                const cart = JSON.parse(localStorage.getItem('cart')); 
+                cart.map((item)=> {
+                  if(item.productName === data.productName)
+                    item.quantity = quantity;
+                  return item;
+                })
+                localStorage.setItem('cart', JSON.stringify(cart));
+                calc(cart)
             }
         }
             
-        if (action == 'increment')
+        else if (action == 'increment'){
             setQuantity(quantity+1)
+            data.quantity = quantity;
+            const cart = JSON.parse(localStorage.getItem('cart')); 
+            cart.map((item)=> {
+              if(item.productName === data.productName)
+                item.quantity +=1;
+              return item;
+            })
+            localStorage.setItem('cart', JSON.stringify(cart));
+            calc(cart)
+        }
     }
 
-    const DeleteUser = () => {
-        dispatch({ type: PRODUCT_ACTIONS.REMOVE_PRODUCT, data })
-    
-      }
 
   return (
     <>
@@ -35,9 +58,9 @@ function CartItem({data}) {
           <img width="100px" height="100px" src={data.img[0]} />
         </td>
         <td>{data.productName}</td>
-        <td>{data.price}$</td>
+        <td className="quantity">{(data.price)* quantity}$</td>
         <td><span className="decrement" onClick={()=>handleQuantity('decrement')}>-</span><span className='num'>{quantity}</span><span className="increment" onClick={()=>handleQuantity('increment')}>+</span></td>
-        <td><button className="btn" onClick={DeleteUser}>Delete product</button></td>
+        <td><button className="btn" onClick={()=>{remove()}}>Delete product</button></td>
       </tr>
       </>
    

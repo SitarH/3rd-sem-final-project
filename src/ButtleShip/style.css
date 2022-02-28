@@ -1,0 +1,109 @@
+body{
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    min-width: 100%;
+    background-color:black
+}
+
+.header{
+    color: white;
+    font-family: monospace;
+    font-weight: 900;
+    font-size: 80px;
+    text-shadow: 2px 2px blue;
+    text-shadow: 5px 5px black, 3px 3px white, 7px 7px black, 10px 5px white, 10px 5px black, 10px 10px white;
+    letter-spacing: 60px;
+    margin-top: -5px;
+    text-align: center;
+    animation: animateGradient 2s infinite;
+    animation-delay: 0s;
+    background-color: red;
+   
+}
+
+.oneShip{
+    animation: animateGradient 2s infinite;
+    animation-delay: 0s;
+}
+.game{
+    display: flex;
+    justify-content: space-between;
+}
+
+.finish{
+    color: red;
+    animation: animateGradient 2s infinite;
+    animation-delay: 0s;
+}
+
+.game-board td{
+    border: 1px solid;
+}
+
+.game-form{
+    font-family: monospace;
+    color: white;
+}
+
+
+
+input{
+    border: 2px solid black;
+}
+
+.game-form{
+    margin-left: 3%;
+
+}
+
+button{
+    padding-left: 60px;
+    padding-right: 60px;
+    background-color: black;
+    color: white;
+    font-family: monospace;
+    margin-top: 50px;
+    border: 1px solid white;
+    cursor: pointer;
+}
+
+table .square{
+    background-color: black;
+    width: 40px;
+    height: 40px;
+    color: white;
+    cursor: pointer
+
+}
+
+.green{
+    background-color: green;
+}
+
+.game-details{
+    margin-right: 10%;
+    margin-top: 80px;
+    background-color: white;
+    color: black;
+    padding: 20px;
+    width: 150px;
+    height: 150px;
+    border: 2px solid black;
+    font-family: monospace;
+    box-shadow: 2px 2px white;
+
+}
+
+@keyframes animateGradient {
+    0% {
+      filter: hue-rotate(0deg);
+    }
+    100% {
+      filter: hue-rotate(360deg);
+      background-position: 200px 200px;
+    }
+  }
+
+
+

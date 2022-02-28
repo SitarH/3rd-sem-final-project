@@ -13,7 +13,7 @@
     align-items: center;
 }
 
-input[type=text], input[type=email], input[type=password], select[type=city], input[type=number], input[type=date],select[name="city"], select[name="category"], textarea[name="des"]{
+input[type=text], input[type=email], input[type=password], select[type=city], input[type=number], input[type=date],select[name="city"], select[name="category"], textarea[name="des"], select[name]{
     padding: 12px 20px;
     margin: 8px 0;
     box-sizing: border-box;

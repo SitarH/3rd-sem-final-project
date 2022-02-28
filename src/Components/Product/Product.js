@@ -27,7 +27,7 @@ function Product({data}) {
         <h3>{data.productName}</h3>
         <p className="serialN">{data.serialNum}</p>
         <p className="price">{data.price}$</p>
-        <p height="52px">{data.description}</p>
+        <p className="des">{data.description}</p>
         <p className="category">{data.category}</p>
         <button className="btn s" onClick={GoToProductPage}>Shop Now</button>
     </div>

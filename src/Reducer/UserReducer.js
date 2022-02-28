@@ -29,10 +29,6 @@ export const UserReducer = (state, action) => {
             }
             break;
         case ACTIONS.UPDATE_USER:
-            debugger
-            console.log(state.users)
-            console.log(action.user)
-            console.log(action.Cuser)
             const updated = UpdateUser(state, action.Cuser, action.user)
             console.log(updated)
             localStorage.setItem('users', JSON.stringify(updated));
