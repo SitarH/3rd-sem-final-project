@@ -5,6 +5,10 @@ import './Cart.css';
 
 function Cart() {
 
+  const purchase = () =>{
+    alert('Purchase completed');
+    localStorage.setItem('cart', null)
+  }
 
 
   return (

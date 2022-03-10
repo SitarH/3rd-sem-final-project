@@ -20,7 +20,7 @@ function CartList() {
         setCartList(cart)
         calculateTotal(cart)
         
-    }, [])
+    }, [localStorage.getItem('cart')])
 
     const calculateTotal = (cart) => {
         let price=0

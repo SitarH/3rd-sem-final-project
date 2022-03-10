@@ -3,6 +3,7 @@ import './MainLayout.css'
 import Navigation from '../Navigation/Navigation'
 import Header from '../Components/Shared/Header/Header'
 import Topbar from '../Components/Shared/Topbar/Topbar'
+import Footer from '../Components/Shared/Footer/Footer'
 
 function Main() {
 
@@ -16,7 +17,9 @@ function Main() {
         <main>
             <Navigation/>
         </main>
-        <footer></footer>
+        <footer>
+            <Footer/>
+        </footer>
             
         </div>
     )

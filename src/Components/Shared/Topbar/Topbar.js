@@ -39,7 +39,7 @@ const goToprofile = () =>{
     return (
         <div className="flex-cols z-one">
         <div className="topbar flex-container space-b align-center">
-            <div>Search</div>
+            <div className="margin">Search</div>
             <div className="right-side flex-container flex-rows">
         {currentUser? <a className="icon account" onClick={goToprofile}>Account</a>: <a className="icon account" onMouseOver={showPopup? ClosePopUp: OpenPopUp}>Account</a>}
            
